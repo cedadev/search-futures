@@ -1,0 +1,33 @@
+@startuml
+title Search API Interfaces and middleware
+
+component "ElasticSearch Cluster" as cpElasticSearchCluster
+interface "ElasticSearch API" as ifElasticSearchAPI
+cpElasticSearchCluster -up-() ifElasticSearchAPI
+
+component cpSearchApp as "Search App" {
+    component "STAC API Plugin" as cpStacApiPlugin
+    interface "STAC API" as ifStacAPI
+    cpStacApiPlugin -up-() ifStacAPI
+
+    component "OpenSearch API Plugin" as cpOpenSearchApiPlugin
+    interface "OpenSearch API" as ifOpenSearchAPI
+    cpOpenSearchApiPlugin -up-() ifOpenSearchAPI
+
+    component "Search Middleware" as cpSearchMiddleware
+    interface "Django Middleware" as ifSearchMiddleware
+    cpSearchMiddleware -up-() ifSearchMiddleware
+    
+    component "ElasticSearch Plugin" as cpElasticSearchPlugin
+    interface "Django Middleware" as ifSearchIndex
+    cpElasticSearchPlugin -up-() ifSearchIndex
+
+
+    cpStacApiPlugin -down-( ifSearchMiddleware
+    cpOpenSearchApiPlugin -down-( ifSearchMiddleware
+    cpSearchMiddleware -down-( ifSearchIndex
+    cpElasticSearchPlugin -down-( ifElasticSearchAPI
+}
+
+
+@enduml
