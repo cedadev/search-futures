@@ -1,25 +1,39 @@
 @startuml
 title Search API Interfaces and middleware
 
+' Apply grey colour scheme
+' skinparam Component {
+'     BackgroundColor LightGray
+'     BorderColor Gray
+' }
+' skinparam Interface {
+'     BackgroundColor LightGray
+'     BorderColor Gray
+' }
+
+' skinparam Arrow {
+'     Color Gray
+' }
+
 component "ElasticSearch Cluster" as cpElasticSearchCluster
 interface "ElasticSearch API" as ifElasticSearchAPI
 cpElasticSearchCluster -up-() ifElasticSearchAPI
 
 component cpSearchApp as "Search App" {
     component "STAC API Plugin" as cpStacApiPlugin
-    interface "STAC API" as ifStacAPI
+    interface "STAC API" as ifStacAPI <<http>>
     cpStacApiPlugin -up-() ifStacAPI
 
     component "OpenSearch API Plugin" as cpOpenSearchApiPlugin
-    interface "OpenSearch API" as ifOpenSearchAPI
+    interface "OpenSearch API" as ifOpenSearchAPI <<http>>
     cpOpenSearchApiPlugin -up-() ifOpenSearchAPI
 
     component "Search Middleware" as cpSearchMiddleware
-    interface "Django Middleware" as ifSearchMiddleware
+    interface "Django Middleware" as ifSearchMiddleware <<python code>>
     cpSearchMiddleware -up-() ifSearchMiddleware
     
     component "ElasticSearch Plugin" as cpElasticSearchPlugin
-    interface "Django Middleware" as ifSearchIndex
+    interface "Django Middleware" as ifSearchIndex <<python code>>
     cpElasticSearchPlugin -up-() ifSearchIndex
 
 
