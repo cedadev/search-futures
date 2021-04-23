@@ -34,12 +34,16 @@ interface "Term Lookup" as ifTermLookup
 cpManualFacetLookup -up-() ifTermLookup
 
 
-' Deterministic process for taking a filepath and returning a
-' stac item ID. This means that items can be generated at the
-' file level but they will self aggregate as they are indexed
 component "Item Describer" as cpItemDescriber
 interface "Item Describer API" as ifItemDescriberAPI
 cpItemDescriber -up-() ifItemDescriberAPI
+note right of cpItemDescriber
+    Deterministic process to generate
+    STAC item UUIDs. If no rules, all files
+    will become their own item but as rules
+    are added, files will be aggregated into
+    items.
+endnote
 
 component "Elasticsearch Ingest" as cpEsIngest
 cpEsIngest -down-( ifIQG
