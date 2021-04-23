@@ -1,0 +1,58 @@
+@startuml
+
+component "Rabbit Server" as cpRabbitServer {
+    component "File Queue" as cpFQ
+    interface "GET" as ifFQP
+    cpFQ -down-() ifFQP
+
+    component "Item Queue" as cpIQ
+    interface "PUT" as ifIQP
+    interface "GET" as ifIQG
+    cpIQ -down-() ifIQP
+    cpIQ -down-() ifIQG
+}
+
+component "ItemExtractor" as cpItemExtractor {
+
+    ' Actual process for taking a file and returning a
+    ' dictionary of facets
+    component "FacetExtractor" as cpFacetExtractor
+}
+cpItemExtractor -up-( ifFQP
+
+
+' Provides the canonical names for things and facet labels
+component "Internal Vocab Server" as cpInternalVocabServer
+interface "Vocab API" as ifIVocabApi
+cpInternalVocabServer -up-() ifIVocabApi
+
+' This provides manual content to fix the messiness
+' of the archive. This could be mapping terms from files
+' to terms in the vocab server, providing defaults or overrides.
+component "Manual Facet Lookup" as cpManualFacetLookup
+interface "Term Lookup" as ifTermLookup
+cpManualFacetLookup -up-() ifTermLookup
+
+
+' Deterministic process for taking a filepath and returning a
+' stac item ID. This means that items can be generated at the
+' file level but they will self aggregate as they are indexed
+component "Item Describer" as cpItemDescriber
+interface "Item Describer API" as ifItemDescriberAPI
+cpItemDescriber -up-() ifItemDescriberAPI
+
+component "Elasticsearch Ingest" as cpEsIngest
+cpEsIngest -down-( ifIQG
+
+database "Elasticsearch" as dbElasticsearch
+interface "Elasticsearch API" as ifElasticsearchAPI
+dbElasticsearch -up-() ifElasticsearchAPI
+
+
+cpItemExtractor -down-( ifIVocabApi
+cpItemExtractor -down-( ifTermLookup
+cpItemExtractor -down-( ifItemDescriberAPI
+cpItemExtractor -up-( ifIQP
+cpEsIngest -down-( ifElasticsearchAPI
+
+@enduml
