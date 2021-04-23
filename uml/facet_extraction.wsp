@@ -19,7 +19,14 @@ component "ItemExtractor" as cpItemExtractor {
     component "FacetExtractor" as cpFacetExtractor
 }
 cpItemExtractor -up-( ifFQP
-
+note right of cpItemExtractor
+    The facet extractor is a simple class/function
+    which, given a file, will return a dict of facets.
+    This then fits into the item extractor where the lookups
+    to the vocab server and outer information sources are
+    done. Should mean that data scientists can generate the
+    facets.
+endnote
 
 ' Provides the canonical names for things and facet labels
 component "Internal Vocab Server" as cpInternalVocabServer
