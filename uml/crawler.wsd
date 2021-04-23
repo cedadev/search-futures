@@ -1,0 +1,76 @@
+@startuml
+component "Crawler" as cpCrawler {
+    component "POSIX Storage Media" as cpPosixMedia
+    interface "POSIX API" as ifPosixAPI
+    cpPosixMedia -down-() ifPosixAPI
+
+    component "Tape Srorage Media" as cpTapeMedia
+    interface "Tape API" as ifTapeAPI
+    cpTapeMedia -down-() ifTapeAPI
+
+    component "Object Storage Media" as cpObjectStoreMedia
+    interface "Object Store API" as ifObjectAPI
+    cpObjectStoreMedia -down-() ifObjectAPI
+
+    component "POSIX Crawler" as cpPosixCrawler
+
+    component "Tape Crawler" as cpTapeCrawler
+
+    component "Object Store Crawler" as cpObjectCrawler
+
+    cpPosixCrawler -up-( ifPosixAPI
+    cpTapeCrawler -up-( ifTapeAPI
+    cpObjectCrawler -up-( ifObjectAPI
+
+    }
+
+
+component "RabbitMQ Server" as cpRabbitServer {
+    component "File Queue" as cpFileQ {
+        ' The "file queue" is split into multiple queues with different priorities
+        ' Consumers will take from the high priority queues first and round robin
+        ' The Deposit queue has the highest priority.
+        component "Tape File Queue"
+        component "POSIX File Queue"
+        component "Object Store File Queue"
+        component "Deposit Server File Queue"
+    }
+    interface "GET" as ifFQG
+    interface "PUT" as ifFQP
+    cpFileQ -up-() ifFQP
+    cpFileQ -up-() ifFQG
+
+    component "Results Queue" as cpResultsQ
+    interface "GET" as ifRQG
+    interface "PUT" as ifRQP
+    cpResultsQ -up-() ifRQP
+    cpResultsQ -down-() ifRQG
+
+    component "Item/Collection Queue" as cpAggQ
+    interface "GET" as ifAQG
+    interface "PUT" as ifAQP
+    cpAggQ -up-() ifAQP
+    cpAggQ -down-() ifAQG
+}
+
+component "Deposit Servers" as cpDepositServer
+cpDepositServer -down-( ifFQP
+
+component "Manual file pusher" as cpManFilePush
+cpManFilePush -down-( ifFQP
+
+component "Asset Extractor" as cpAssetExtractor
+cpAssetExtractor -down-( ifFQG
+cpAssetExtractor -down-( ifRQP
+
+component "Elasticsearch Ingest" as cpEsIngest
+cpEsIngest -down-( ifRQG
+cpEsIngest -down-( ifAQG
+
+database "Elasticsearch" as dElasticsearch
+interface "Elasticsearch API" as ifElasticsearch
+dElasticsearch -up-() ifElasticsearch
+cpEsIngest -down-( ifElasticsearch
+
+cpCrawler -down-( ifFQP
+@enduml
