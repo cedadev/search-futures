@@ -4,7 +4,7 @@ component "Crawler" as cpCrawler {
     interface "POSIX API" as ifPosixAPI
     cpPosixMedia -down-() ifPosixAPI
 
-    component "Tape Srorage Media" as cpTapeMedia
+    component "Tape Storage Media" as cpTapeMedia
     interface "Tape API" as ifTapeAPI
     cpTapeMedia -down-() ifTapeAPI
 

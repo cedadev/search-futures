@@ -1,0 +1,74 @@
+@startuml
+title Asset Extractor Component Diagram
+
+package "File Handlers" as pFileHandlers {
+    component "BADC CSV" as cpBadcCsv
+    component "ESA Safe" as cpEsaSafe
+    component "Generic File" as cpGenericFile
+    component "GRIB" as cpGrib
+    component "HDF" as cpHdf
+    component "KMZ" as cpKmz
+    component "JSON" as cpJson
+    component "NASA AMES" as cpNasaAmes
+    component "NetCDF" as cpNetCDF
+    component "PP" as cpPp
+    component "File Handler Picker" as cpFileHandlerPicker
+}
+interface "File Handler API" as ifFileHandlerAPI
+cpFileHandlerPicker -up-() ifFileHandlerAPI
+
+package "Media Handlers" as pMediaHandlers {
+    component "Tape Handler" as cpTapeHandler
+    component "POSIX Handler" as cpPOSIXHandler
+    component "Object Store Handler" as cpObjectStoreHandler
+    component "Media Handler Picker" as cpMediaHandlerPicker
+}
+interface "Media Handler API" as ifMediaHandlerAPI
+cpMediaHandlerPicker -up-() ifMediaHandlerAPI
+pMediaHandlers -down-( ifFileHandlerAPI
+
+component "AssetStorageBackend" as cpStorageBackend {
+    component "Elasticsearch Storage Backend" as cpElasticsearchBackend
+    component "RabbitMQ Backend" as cpRabbitMQBackend
+}
+
+interface "StorageBackendAPI" as ifStorageBackendAPI
+cpStorageBackend -up-() ifStorageBackendAPI
+
+database "Elasticsearch" as cpElasticsearch
+interface "Elasticsearch API" as ifElasticsearch
+cpElasticsearch -up-() ifElasticsearch
+
+node "Rabbit MQ" as cpRabbitMQ
+interface "RabbitMQ API" as ifRabbitMQ
+cpRabbitMQ -up-() ifRabbitMQ
+
+component "Logstash" as cpLogstash
+cpLogstash -left-( ifRabbitMQ
+cpLogstash -right-( ifElasticsearch
+
+component "Asset Extractor" as cpAssetExtractor
+interface "process_file()" as ifAssetProcessFile
+
+component "List Source"  as cpListSource {
+    component "RabbitMQConsumer" as cpRabbitConsumer
+}
+
+node "RabbitMQ" as nRabbitMQ2
+interface "RabbitMQ API" as ifRabbitMQ2
+
+cpListSource -right-( ifAssetProcessFile
+nRabbitMQ2 -right-() ifRabbitMQ2
+cpRabbitConsumer -up-( ifRabbitMQ2
+
+' Asset extractor apis
+cpAssetExtractor -right-( ifStorageBackendAPI
+cpAssetExtractor -down-( ifMediaHandlerAPI
+cpAssetExtractor -left-() ifAssetProcessFile
+
+' Asset storeage backend connections
+cpRabbitMQBackend -down-( ifRabbitMQ
+cpElasticsearchBackend -down-( ifElasticsearch
+
+
+@enduml

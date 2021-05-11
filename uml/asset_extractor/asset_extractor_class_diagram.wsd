@@ -1,0 +1,48 @@
+@startuml
+title Asset Extractor Class Diagram
+
+package "asset_extractor" as pAssetExtractor {
+
+    class "AssetExtractor" as cAssetExtractor {
+        conf
+        +export(asset: dict) -> None
+        +process_file(filename: str, media_type: str, processing_level: str) -> None
+    }
+
+    abstract class "handlers.MediaHandler" as cMediaHandler {
+
+    }
+}
+
+package "file_handlers" as pFileHandlers {
+    class GenericFile {
+        +get_metadata_level1(file_obj) -> dict
+        +get_metadata_level2(file_obj) -> dict
+        +get_metadata_level3(file_obj) -> dict
+        +get_metadata(file_obj, level: str) -> dict
+    }
+
+    class NetCDFFile
+    class BADCCSVFile
+    class ESASafeFile
+    class GRIBFile
+    class HDFFile
+    class KMZFile
+    class JSONFile
+    class NASAAmesFile
+    class PPFile
+
+    NetCDFFile <|-- GenericFile
+    BADCCSVFile <|-- GenericFile
+    ESASafeFile <|-- GenericFile
+    GRIBFile <|-- GenericFile
+    HDFFile <|-- GenericFile
+    KMZFile <|-- GenericFile
+    JSONFile <|-- GenericFile
+    NASAAmesFile <|-- GenericFile
+    PPFile <|-- GenericFile
+}
+
+
+
+@enduml
