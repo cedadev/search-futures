@@ -3,15 +3,22 @@ title Asset Extractor Class Diagram
 
 package "asset_extractor" as pAssetExtractor {
 
-    class "AssetExtractor" as cAssetExtractor {
+    class "asset_extractor.core.AssetExtractor" as cAssetExtractor {
         conf
         +export(asset: dict) -> None
         +process_file(filename: str, media_type: str, processing_level: str) -> None
     }
 
-    abstract class "handlers.MediaHandler" as cMediaHandler {
+    abstract class "asset_extractor.handlers.BaseHandlerPicker" as cBaseHandlerPicker {
 
     }
+
+    abstract class "asset_extractor.handlers.BaseFileHandler" as cBaseFileHandler {
+    }
+
+    abstract class "asset_extractor.handlers.BaseMediaHandler" as cBaseMediaHandler {
+    }
+
 }
 
 package "file_handlers" as pFileHandlers {
@@ -32,6 +39,7 @@ package "file_handlers" as pFileHandlers {
     class NASAAmesFile
     class PPFile
 
+    GenericFile <|-- cBaseFileHandler
     NetCDFFile <|-- GenericFile
     BADCCSVFile <|-- GenericFile
     ESASafeFile <|-- GenericFile
