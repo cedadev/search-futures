@@ -3,7 +3,7 @@ title Asset Extractor Component Diagram
 
 
 
-note right of pMediaHandlers
+note bottom of pMediaHandlers
     size
     extension
     mtime
@@ -16,9 +16,6 @@ note right of pMediaHandlers
     }
 end note
 
-interface "File Handler API" as ifFileHandlerAPI
-cpFileHandlerPicker -up-() ifFileHandlerAPI
-
 package "Media Handlers" as pMediaHandlers {
     component "Tape Handler" as cpTapeHandler
     component "POSIX Handler" as cpPOSIXHandler
@@ -27,7 +24,6 @@ package "Media Handlers" as pMediaHandlers {
 }
 interface "Media Handler API" as ifMediaHandlerAPI
 cpMediaHandlerPicker -up-() ifMediaHandlerAPI
-pMediaHandlers -down-( ifFileHandlerAPI
 
 component "AssetStorageBackend" as cpStorageBackend {
     component "Elasticsearch Storage Backend" as cpElasticsearchBackend

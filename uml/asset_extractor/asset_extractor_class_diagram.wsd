@@ -13,43 +13,18 @@ package "asset_extractor" as pAssetExtractor {
 
     }
 
-    abstract class "asset_extractor.handlers.BaseFileHandler" as cBaseFileHandler {
-    +get_metadata(file_obj, *args, **kwargs) -> dict
-    }
-
     abstract class "asset_extractor.handlers.BaseMediaHandler" as cBaseMediaHandler {
+        +get_metadata(file, *args, *kwargs) -> dict
     }
 
-}
 
-package "file_handlers" as pFileHandlers {
-    class GenericFile {
-        +get_metadata_level1(file_obj) -> dict
-        +get_metadata_level2(file_obj) -> dict
-        +get_metadata_level3(file_obj) -> dict
-        +get_metadata(file_obj, level: str) -> dict
-    }
+    class "asset_extractor.handlers.media.POSIXHandler" as cPOSIXHandler {}
+    class "asset_extractor.handlers.media.TapeHandler" as cTapeHandler {}
+    class "asset_extractor.handlers.media.ObjectStoreHandler" as cObjectStoreHandler {}
 
-    class NetCDFFile
-    class BADCCSVFile
-    class ESASafeFile
-    class GRIBFile
-    class HDFFile
-    class KMZFile
-    class JSONFile
-    class NASAAmesFile
-    class PPFile
-
-    GenericFile <|-- cBaseFileHandler
-    NetCDFFile <|-- GenericFile
-    BADCCSVFile <|-- GenericFile
-    ESASafeFile <|-- GenericFile
-    GRIBFile <|-- GenericFile
-    HDFFile <|-- GenericFile
-    KMZFile <|-- GenericFile
-    JSONFile <|-- GenericFile
-    NASAAmesFile <|-- GenericFile
-    PPFile <|-- GenericFile
+    cPOSIXHandler <|-- cBaseMediaHandler
+    cTapeHandler <|-- cBaseMediaHandler
+    cObjectStoreHandler <|-- cBaseMediaHandler
 }
 
 
