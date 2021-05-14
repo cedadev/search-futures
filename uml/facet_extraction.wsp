@@ -26,6 +26,12 @@ note right of cpItemExtractor
     to the vocab server and outer information sources are
     done. Should mean that data scientists can generate the
     facets.
+
+    Things to extract at the facet level:
+    time
+    space
+    variables
+    other facets...
 endnote
 
 ' Provides the canonical names for things and facet labels
@@ -50,6 +56,8 @@ note right of cpItemDescriber
     will become their own item but as rules
     are added, files will be aggregated into
     items.
+    Groupings and relation
+    README is associated with group but isn't an item.
 endnote
 
 component "Elasticsearch Ingest" as cpEsIngest

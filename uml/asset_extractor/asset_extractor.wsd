@@ -1,19 +1,21 @@
 @startuml
 title Asset Extractor Component Diagram
 
-package "File Handlers" as pFileHandlers {
-    component "BADC CSV" as cpBadcCsv
-    component "ESA Safe" as cpEsaSafe
-    component "Generic File" as cpGenericFile
-    component "GRIB" as cpGrib
-    component "HDF" as cpHdf
-    component "KMZ" as cpKmz
-    component "JSON" as cpJson
-    component "NASA AMES" as cpNasaAmes
-    component "NetCDF" as cpNetCDF
-    component "PP" as cpPp
-    component "File Handler Picker" as cpFileHandlerPicker
-}
+
+
+note right of pMediaHandlers
+    size
+    extension
+    mtime
+    magic number?
+    media type
+    filepath_type_location
+    checksums {
+        time:
+        checksum
+    }
+end note
+
 interface "File Handler API" as ifFileHandlerAPI
 cpFileHandlerPicker -up-() ifFileHandlerAPI
 

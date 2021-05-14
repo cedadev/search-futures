@@ -1,0 +1,10 @@
+@startuml
+queue "Rabbit File Queue" as qRBQFiles
+
+qRBQFiles -> AssetExtractor: Retrieve message from queue
+AssetExtractor -> MediaHandler: Open Object
+MediaHandler -> AssetExtractor: Return Metadata
+
+queue "Asset Queue" as qRBQAsset
+AssetExtractor -> qRBQAsset: Store Metadata
+@enduml
