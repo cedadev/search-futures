@@ -4,12 +4,14 @@ title Asset Extractor Component Diagram
 
 
 note bottom of pMediaHandlers
+    _id
     size
     extension
     mtime
     magic number?
     media type
     filepath_type_location
+    filename
     checksums {
         time:
         checksum
