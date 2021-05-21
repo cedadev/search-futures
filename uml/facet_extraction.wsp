@@ -26,6 +26,13 @@ note right of cpItemExtractor
     to the vocab server and outer information sources are
     done. Should mean that data scientists can generate the
     facets.
+
+    There are things which would be useful to have items for but we would not want to
+    make publically searchable (perhaps a visibility facet public/private)
+
+    The rule to aggregation might belong here.
+
+    functional extraction? Defined in YAML?
 endnote
 
 ' Provides the canonical names for things and facet labels
@@ -50,6 +57,9 @@ note right of cpItemDescriber
     will become their own item but as rules
     are added, files will be aggregated into
     items.
+
+    Assets are aggregated based on rules placed on
+    extracted facets.
 endnote
 
 component "Elasticsearch Ingest" as cpEsIngest
