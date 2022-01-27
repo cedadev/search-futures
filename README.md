@@ -12,31 +12,36 @@ Future Search Architecture
 - [Item Descriptions](https://github.com/cedadev/item-descriptions) - Configuration files for the indexing workflow. They describe how to construct the assets, items and collections. 
 - [Item Descriptions Depoyment](https://breezy.badc.rl.ac.uk/stac/stac-item-descriptions) - Descriptions are also pushed here to build a data container for the indexing process.
 - [Asset Scanner Example](https://github.com/cedadev/asset-scanner-example) - Example repo which launches in Binder to demonstrate the indexing workflow.
-- [STAC Indexing Deployment](https://breezy.badc.rl.ac.uk/rsmith013/stac-indexer-deploy) -  Deployment of the STAC indexers in Kubernetes.
+- [STAC Indexing Deployment](https://breezy.badc.rl.ac.uk/stac/stac-indexer-deploy) -  Deployment of the STAC indexers in Kubernetes.
 
 ### API
 
-[Server Implementation]
-[Deployment]
+[Server Implementation](https://github.com/cedadev/stac-fastapi-elasticsearch) - Our Elasticsearch implementation of the STAC API
+[Deployment](https://breezy.badc.rl.ac.uk/stac/stac-fastapi-elasticsearch-deploy) - Deployment for the API server
 Extensions:
-- [free-text]
-- [context-colletions]
-- [asset-search]
-- [discoverable-facets]
-[Asset Spec]
+- filter - Built in extension to provide faceted search and more advanced queries based on [CQL2](https://portal.ogc.org/files/96288#filter-queryables) 
+  Elasticsearch queries made possible through [pygeofilter-elasticsearch](https://github.com/cedadev/pygeofilter-elasticsearch)
+- (https://github.com/rsmith013/pygeofilter-elasticsearch) - Elasticsearch implementation 
+- [free-text](https://github.com/cedadev/stac-freetext-search) - OpenAPI Schema to describe the API extension. Adds `q` parameter to search.
+- [free-text-ext](https://github.com/cedadev/stac-free-text-ext) - Extension classes to use with the STAC FastAPI framework
+- [context-colletions](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
+- [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
+- [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
+- [discoverable-facets] -  Not yet created
+[Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
 ### UI
-[Application]
-[Deployment]
+[Application](https://github.com/cedadev/stac-ui) - ReactJS application to serve as a demo UI for STAC
+[Deployment](https://breezy.badc.rl.ac.uk/stac/stac-ui-deploy) -  Deployment of STAC UI in kubernetes
 
 ### Vocabularies
-[Vocabulary Generator]
-[Vocabulary API]
+[Vocabulary Generator](https://github.com/cedadev/stac-vocab) -  Generates vocabulary and mapping to canonical CEDA vocab from different source vocabs.
+[Vocabulary API](https://github.com/cedadev/stac-vocab-api) - API server to allow search for vocabs
 [Deployment]
 
 ### Upstream Repos to keep an eye on
-[stac-fastapi]
-[pygeofilter]
+[stac-fastapi](https://github.com/stac-utils/stac-fastapi) - The framework for the STAC API Server
+[pygeofilter](https://github.com/geopython/pygeofilter) -  Constructs abstract syntax trees (AST) from CQL queries. 
 
 
 
