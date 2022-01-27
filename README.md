@@ -1,6 +1,8 @@
 # search-futures
 Future Search Architecture
 
+NOTE: PlantUML was used to generate diagrams.
+
 ## Search API Interfaces and Middleware
 ![Search API](out/uml/search/Search%20API%20Interfaces%20and%20middleware.png)
 
