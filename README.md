@@ -20,8 +20,7 @@ Future Search Architecture
 [Deployment](https://breezy.badc.rl.ac.uk/stac/stac-fastapi-elasticsearch-deploy) - Deployment for the API server
 Extensions:
 - filter - Built in extension to provide faceted search and more advanced queries based on [CQL2](https://portal.ogc.org/files/96288#filter-queryables) 
-  Elasticsearch queries made possible through [pygeofilter-elasticsearch](https://github.com/cedadev/pygeofilter-elasticsearch)
-- (https://github.com/rsmith013/pygeofilter-elasticsearch) - Elasticsearch implementation 
+  Elasticsearch queries made possible through [pygeofilter-elasticsearch](https://github.com/cedadev/pygeofilter-elasticsearch).
 - [free-text](https://github.com/cedadev/stac-freetext-search) - OpenAPI Schema to describe the API extension. Adds `q` parameter to search.
 - [free-text-ext](https://github.com/cedadev/stac-free-text-ext) - Extension classes to use with the STAC FastAPI framework
 - [context-colletions](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
