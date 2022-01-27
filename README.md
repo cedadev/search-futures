@@ -26,8 +26,8 @@ Extensions:
 - [context-colletions](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
 - [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
 - [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
-- [discoverable-facets] -  Not yet created
-[Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
+- [discoverable-facets]() -  Not yet created
+- [Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
 ### UI
 [Application](https://github.com/cedadev/stac-ui) - ReactJS application to serve as a demo UI for STAC
@@ -36,7 +36,7 @@ Extensions:
 ### Vocabularies
 [Vocabulary Generator](https://github.com/cedadev/stac-vocab) -  Generates vocabulary and mapping to canonical CEDA vocab from different source vocabs.
 [Vocabulary API](https://github.com/cedadev/stac-vocab-api) - API server to allow search for vocabs
-[Deployment]
+[Deployment]()
 
 ### Upstream Repos to keep an eye on
 [stac-fastapi](https://github.com/stac-utils/stac-fastapi) - The framework for the STAC API Server
