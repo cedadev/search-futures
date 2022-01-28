@@ -25,7 +25,7 @@ Extensions:
 - [context-colletions](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
 - [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
 - [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
-- [discoverable-facets]() -  Not yet created
+- [discoverable-facets](https://github.com/cedadev/search-futures/issues/79) -  Not yet created
 - [Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
 ### UI
@@ -33,13 +33,13 @@ Extensions:
 [Deployment](https://breezy.badc.rl.ac.uk/stac/stac-ui-deploy) -  Deployment of STAC UI in kubernetes
 
 ### Vocabularies
-[Vocabulary Generator](https://github.com/cedadev/stac-vocab) -  Generates vocabulary and mapping to canonical CEDA vocab from different source vocabs.
-[Vocabulary API](https://github.com/cedadev/stac-vocab-api) - API server to allow search for vocabs
-[Deployment]()
+- [Vocabulary Generator](https://github.com/cedadev/stac-vocab) -  Generates vocabulary and mapping to canonical CEDA vocab from different source vocabs.
+- [Vocabulary API](https://github.com/cedadev/stac-vocab-api) - API server to allow search for vocabs
+- [Deployment]()
 
 ### Upstream Repos to keep an eye on
-[stac-fastapi](https://github.com/stac-utils/stac-fastapi) - The framework for the STAC API Server
-[pygeofilter](https://github.com/geopython/pygeofilter) -  Constructs abstract syntax trees (AST) from CQL queries. 
+- [stac-fastapi](https://github.com/stac-utils/stac-fastapi) - The framework for the STAC API Server
+- [pygeofilter](https://github.com/geopython/pygeofilter) -  Constructs abstract syntax trees (AST) from CQL queries. 
 
 
 ## Early UML Architecture Diagrams
