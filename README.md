@@ -29,8 +29,8 @@ Extensions:
 - [Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
 ### UI
-[Application](https://github.com/cedadev/stac-ui) - ReactJS application to serve as a demo UI for STAC
-[Deployment](https://breezy.badc.rl.ac.uk/stac/stac-ui-deploy) -  Deployment of STAC UI in kubernetes
+- [Application](https://github.com/cedadev/stac-ui) - ReactJS application to serve as a demo UI for STAC
+- [Deployment](https://breezy.badc.rl.ac.uk/stac/stac-ui-deploy) -  Deployment of STAC UI in kubernetes
 
 ### Vocabularies
 - [Vocabulary Generator](https://github.com/cedadev/stac-vocab) -  Generates vocabulary and mapping to canonical CEDA vocab from different source vocabs.
