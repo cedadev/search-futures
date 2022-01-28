@@ -9,7 +9,7 @@
 - [Item Generator](https://github.com/cedadev/item-generator) - Summarises Assets to form Items. Can also run its own processors to enrich the item content.  Input is a stream of `item_id`s and `filepaths`. Outputs `Item` and `tuple(<collection_id>,<filepath>)
 - [Collection Generator](https://github.com/cedadev/collection-generator) - Summarises Items to form Collections. Can also run its own processors to enrich the Collection content. Input is a stream of `collection_id`s and `filepaths`. Outputs `Collections`
 - [Item Descriptions](https://github.com/cedadev/item-descriptions) - Configuration files for the indexing workflow. They describe how to construct the assets, items and collections. 
-- [Item Descriptions Depoyment](https://breezy.badc.rl.ac.uk/stac/stac-item-descriptions) - Descriptions are also pushed here to build a data container for the indexing process.
+- [Item Descriptions Deployment](https://breezy.badc.rl.ac.uk/stac/stac-item-descriptions) - Descriptions are also pushed here to build a data container for the indexing process.
 - [Asset Scanner Example](https://github.com/cedadev/asset-scanner-example) - Example repo which launches in Binder to demonstrate the indexing workflow.
 - [STAC Indexing Deployment](https://breezy.badc.rl.ac.uk/stac/stac-indexer-deploy) -  Deployment of the STAC indexers in Kubernetes.
 
