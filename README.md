@@ -15,17 +15,17 @@
 
 ### API
 
-[Server Implementation](https://github.com/cedadev/stac-fastapi-elasticsearch) - Our Elasticsearch implementation of the STAC API
-[Deployment](https://breezy.badc.rl.ac.uk/stac/stac-fastapi-elasticsearch-deploy) - Deployment for the API server
-Extensions:
-- filter - Built in extension to provide faceted search and more advanced queries based on [CQL2](https://portal.ogc.org/files/96288#filter-queryables) 
+- [Server Implementation](https://github.com/cedadev/stac-fastapi-elasticsearch) - Our Elasticsearch implementation of the STAC API
+- [Deployment](https://breezy.badc.rl.ac.uk/stac/stac-fastapi-elasticsearch-deploy) - Deployment for the API server
+- Extensions:
+  - filter - Built in extension to provide faceted search and more advanced queries based on [CQL2](https://portal.ogc.org/files/96288#filter-queryables) 
   Elasticsearch queries made possible through [pygeofilter-elasticsearch](https://github.com/cedadev/pygeofilter-elasticsearch).
-- [free-text](https://github.com/cedadev/stac-freetext-search) - OpenAPI Schema to describe the API extension. Adds `q` parameter to search.
-- [free-text-ext](https://github.com/cedadev/stac-free-text-ext) - Extension classes to use with the STAC FastAPI framework
-- [context-colletions](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
-- [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
-- [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
-- [discoverable-facets](https://github.com/cedadev/search-futures/issues/79) -  Not yet created
+  - [free-text](https://github.com/cedadev/stac-freetext-search) - OpenAPI Schema to describe the API extension. Adds `q` parameter to search.
+  - [free-text-ext](https://github.com/cedadev/stac-free-text-ext) - Extension classes to use with the STAC FastAPI framework
+  - [context-collections](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
+  - [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
+  - [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
+  - [discoverable-facets](https://github.com/cedadev/search-futures/issues/79) -  Not yet created
 - [Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
 ### UI
