@@ -25,6 +25,7 @@
   - [context-collections](https://github.com/cedadev/stac-context-collections) - OpenAPI Schema to describe the API extension. Adds collection IDs in the context response.  
   - [context-collections-ext](https://github.com/cedadev/stac-context-collection-ext) -  Extension classes to use with the STAC FastAPI framework.
   - [asset-search](https://github.com/cedadev/stac-asset-search) -  OpenAPI Schema to describe the API extension. Adds `/assets/search` endpoint.
+  - [asset-list](https://github.com/cedadev/stac-asset-list/blob/main/README.md) - OpenAPI Schema to describe the API extension. Addes `/collections/<collectionId>/items/<itemId>/assets`
   - [discoverable-facets](https://github.com/cedadev/search-futures/issues/79) -  Not yet created
 - [Asset Spec](https://github.com/cedadev/stac-asset-spec) - Draft specification for assets
 
